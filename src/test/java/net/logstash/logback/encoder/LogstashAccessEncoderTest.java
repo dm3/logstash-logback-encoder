@@ -78,7 +78,7 @@ public class LogstashAccessEncoderTest {
         assertThat(node.get("@fields.HOSTNAME").textValue(), is(event.getRemoteHost()));
         assertThat(node.get("@fields.remote_user").textValue(), is(event.getRemoteUser()));
         assertThat(node.get("@fields.content_length").asLong(), is(event.getContentLength()));
-        assertThat(node.get("@fields.elapsed_time").asLong(), is(event.getElapsedTime()));
+        assertThat(node.get("@fields.elapsed_time").asLong(), is(event.getTimeStamp()));
         
     }
     
@@ -134,7 +134,7 @@ public class LogstashAccessEncoderTest {
         when(event.getRequestURL()).thenReturn("https://123.123.123.123/my/uri");
         when(event.getStatusCode()).thenReturn(200);
         when(event.getTimeStamp()).thenReturn(System.currentTimeMillis());
-        when(event.getElapsedTime()).thenReturn(246L);
+        when(event.getTimeStamp()).thenReturn(246L);
         return event;
     }
     
